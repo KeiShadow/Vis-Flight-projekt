@@ -1,0 +1,13 @@
+﻿
+    @{
+        ViewBag.Title = "Dashboard";
+    }
+    <div class="container">
+        <h1>Dashboard</h1>
+
+        <h2>Vítejte uživateli: @Session["Login"]</h2>
+        <p> Pro vyhledání letu klikněte sem: @Html.ActionLink("Vyhledat let", "findFlights", "Home")</p>
+        <p> Pro oblíbené lety klikněte sem: @Html.ActionLink("Oblíbené lety", "FavoriteFlights", "Home") </p>
+
+    </div>
+

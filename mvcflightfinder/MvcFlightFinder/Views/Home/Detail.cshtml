@@ -1,0 +1,117 @@
+﻿@model IEnumerable<MvcFlightFinder.Models.Lety>
+
+
+<!--model Tuple<MvcFlightFinder.Models.form, List< MvcFlightFinder.Models.Lety>> -->
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="boxLety">
+    <div id="lety">
+  @foreach (var item in Model)
+  {
+
+        <div class="card">
+            <a class="btn" name="clickFlight" href="#@Html.DisplayFor(modelItem => item.IdCollapse)" id="@Html.DisplayFor(modelItem => item.Id)" onclick="setRoutes(@Html.DisplayFor(modelItem => item.Id))" data-toggle="collapse">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="lead"> Kdy mi to letí ?: <br /> @Html.DisplayFor(modelItem => item.dateFrom) </p><br>
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.DisplayFor(modelItem => item.From) - @Html.DisplayFor(modelItem => item.To)
+                        </div>
+                        <div class="col-sm-3">
+                            Doba cesty: @Html.DisplayFor(modelItem => item.Duration)
+                        </div>
+                        <div class="col-sm-3">
+                            Cena: @Html.DisplayFor(modelItem => item.Cena) Kč
+                        </div>
+                    </div>
+
+                </div>
+
+            </a>
+            <div class="collapse" id="@Html.DisplayFor(modelItem => item.IdCollapse)">
+                <div class="card-block">
+                       
+                    @if (Session["Login"] != null)
+                    { <div class="col">
+                        @Html.ActionLink("Přidat do oblíbených", "setFavFlight", "Home", new { id = item.Id }, null)
+                    </div>
+                    }
+                     else
+                        {
+                        @Html.ActionLink("Pro přidání do oblibených se prosím přihlašte.", "setFavFlight", "Home", new { @class = "disabled" });
+                        }
+
+
+                    
+                </div>
+            </div>
+
+        </div>
+     
+
+
+
+
+  }
+ 
+       
+</div>
+</div>
+
+
+  <div id="boxMap">
+    <div id='map'></div>
+</div>
+
+
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmPK2B-9hLjyCmXlHb4DOOeCAPNUp9GPk&callback=initMap&language=cs">
+</script>
+
+
+
+<script type="text/javascript">
+    locations = @Html.Raw(ViewBag.LokMapa);
+    var routes = @Html.Raw(ViewBag.setRoutes);
+   
+  
+     function setRoutes(i) {
+        $("#collapse" + i).on('show.bs.collapse', function () {
+                        tem = true;
+                        for (var j = 0; j < routes[i]["route"].length; j++) {
+                            concat[j] = { name: routes[i]["route"][j]["cityFrom"], "lat": routes[i]["route"][j]["latFrom"], "lng": routes[i]["route"][j]["lngFrom"] };
+            concat[j + 1] = { name: routes[i]["route"][j]["cityTo"], "lat": routes[i]["route"][j]["latTo"], "lng": routes[i]["route"][j]["lngTo"] };
+        }
+        concat = $.grep(concat, function (n) { return n === 0 || n });
+            console.log(concat);
+            setTrack();
+    })
+        $("#collapse" + i).on('hidden.bs.collapse', function () {
+        concat = new Array();
+        clearTrack();
+        })
+        
+    }
+
+function Prestupy(routes, i) {
+    var  neco = "";
+    for (var x = 0; x < routes[i]["route"].length; x++) {
+        neco += "<div class=\"col\"> <ul class=\"list-group\"> <li class=\"list-group-item\"> " +
+            //convertTime(routes[i]["route"][x].dTime) + ": " +
+            routes[i]["route"][x].cityFrom + "<br> " +
+            // convertTime(routes[i]["route"][x].aTime) + ": " +
+            routes[i]["route"][x].cityTo +
+            "</li></ul><br></div>";
+    }
+
+    return neco;
+}
+
+
+
+</script>

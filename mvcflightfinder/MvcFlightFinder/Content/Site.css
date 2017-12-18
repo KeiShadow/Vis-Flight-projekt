@@ -1,0 +1,38 @@
+﻿html, body {
+    height: 100%;
+}
+
+#map {
+    height: 100%;
+}
+
+.boxForm {
+    /*padding: 6em,0em,0em,0em;*/
+    margin-left: 30%;
+    margin-top: 10%;
+    width:50%;
+    
+}
+.boxLety {
+    overflow-x: scroll;
+    margin-left: 15px;
+    width: 50%;
+    float: left;
+    height: 98%;
+}
+
+.ods {
+    margin-top: 100px;
+}
+
+#boxMap {
+    margin-top: 60px;
+    height: 92%;
+    width: 49%;
+    float: right;
+}
+
+#lety {
+    padding: 4em 0em 0em 0em;
+    margin-left: 5px;
+}
