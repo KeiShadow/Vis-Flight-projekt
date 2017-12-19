@@ -24,9 +24,10 @@ namespace MvcFlightFinder.Controllers
         static List<Location> locList = new List<Location>();
         static List<Lety> letList = new List<Lety>();
         static List<Form> formList = new List<Form>();
-        static List<FavoriteFligthsSQLMapper> favF = new List<FavoriteFligthsSQLMapper>();
-        static Collection<FavoriteFligths> favList = new Collection<FavoriteFligths>();
         static List<Users> userList = new List<Users>();
+
+        static Collection<FavoriteFligths> favList = new Collection<FavoriteFligths>();        
+        static Collection<BookedFlights> bookList = new Collection<BookedFlights>();
 
         public ActionResult findFlights()
         {
@@ -59,6 +60,10 @@ namespace MvcFlightFinder.Controllers
 
         public ActionResult Detail()
         {
+            if (getFlights().Count != 0) {
+                return View(getFlights());
+            }
+            ViewBag.Warn = "Nemáte žádné zakoupené letenky";
             return View(getFlights());
         }
 
@@ -79,20 +84,23 @@ namespace MvcFlightFinder.Controllers
 
             var usr = UsersSQLMapper.Where(user.Email, user.Password).ToArray();
 
-            if (usr != null)
+            if (usr != null )
             {
              foreach (var item in usr)
                 {
                     user.Id = item.Id;
                     user.Nick = item.Nick;
                     user.Email = item.Email;
-                   
+                    user.Firstname = item.Firstname;
+                    user.Lastname = item.Lastname;
+
                 }
 
 
-                Session["userID"] = user.Id;
+                Session["Id"] = user.Id;
                 Session["Email"] = user.Email.ToString();
                 Session["Login"] = user.Nick.ToString();
+                
                 userList.Add(user);
                 return Redirect("/Home/Dashboard");
             }
@@ -104,9 +112,12 @@ namespace MvcFlightFinder.Controllers
         }
 
         public ActionResult FavoriteFligths() {
-
-            var fav = FavoriteFligthsSQLMapper.getFavFlights((int)Session["userID"]);
-
+            var fav = FavoriteFligthsSQLMapper.getFavFlights((int)Session["Id"]);
+           if (fav.Count != 0)
+            {
+               return View(fav);
+            }
+            ViewBag.Warn = "Nemáte žádné oblíbené lety!";
             return View(fav);
         }
 
@@ -119,14 +130,14 @@ namespace MvcFlightFinder.Controllers
             favorite.FlyFrom = letList[id].From;
             favorite.FlyTo = letList[id].To;
             favorite.Datefrom = letList[id].dateFrom;
-            favorite.Price = Int32.Parse(letList[id].Cena);
+            favorite.Price = letList[id].Cena;
 
             FavoriteFligthsSQLMapper.Insert(favorite);
             return Redirect("/Home/FavoriteFligths");
         }
 
         public ActionResult LogOut() {
-            int userID = (int)Session["userID"];
+            int userID = (int)Session["Id"];
             Session.Abandon();
             return Redirect("/Home/Login");
         }
@@ -151,7 +162,7 @@ namespace MvcFlightFinder.Controllers
             userList.Add(users);
             UsersSQLMapper.Insert(users);
 
-            return Redirect("/Home/Dashboard");
+            return Redirect("/Home/Login");
         }
         
 
@@ -177,6 +188,7 @@ namespace MvcFlightFinder.Controllers
             return locations;
         }
 
+
         public List<Lety> getFlights() {
 
             ViewBag.LokMapa = getPlaces();
@@ -190,33 +202,42 @@ namespace MvcFlightFinder.Controllers
                 from = fitem.srchFrom;
                 to = fitem.srchTo;
                 dfrom = fitem.dateFrom;
-
             }
-            String urlFlights = "https://api.skypicker.com/flights?flyFrom=" + from + "&to=" + to + "&dateFrom=" + dfrom + "&locale=cz&curr=CZK&sort=price";
-            Debug.WriteLine(urlFlights);
-            var jFile = client.DownloadString(urlFlights);
-          
-            JArray jArray = JArray.Parse(@"["+jFile+"]");
+            if (from != "" || dfrom != "" || to != "") {
+                String urlFlights = "https://api.skypicker.com/flights?flyFrom=" + from + "&to=" + to + "&dateFrom=" + dfrom + "&locale=cz&curr=CZK&sort=price&limit=20";
 
-            dynamic jItem = JObject.Parse(jFile);
-          
-            int i = 0;   
-            foreach (var item in jItem.data) {
-                Lety lety = new Lety();
-                lety.Id = i;
-                lety.IdCollapse = "collapse"+i.ToString();
-                lety.From = (string)item["cityFrom"];
-                lety.To = (string)item["cityTo"];
-                lety.Cena = (string)item["price"];
-                lety.Duration = toHHMMSS((double)item["duration"]["total"]);
-                lety.dateFrom = UnixTimeStampToDateTime((double)item["dTime"]);
-                lety.Cena = (string)item["price"];
-                letList.Add(lety);
 
-                i++;
+                var jFile = client.DownloadString(urlFlights);
+
+                JArray jArray = JArray.Parse(@"[" + jFile + "]");
+
+                dynamic jItem = JObject.Parse(jFile);
+                List<int> ids = new List<int>();
+                int i = 0;
+                string id = "[" + i;
+
+                foreach (var item in jItem.data)
+                {
+
+
+                    Lety lety = new Lety();
+                    lety.Id = i;
+                    lety.IdCollapse = "collapse" + i.ToString();
+                    lety.From = (string)item["cityFrom"];
+                    lety.To = (string)item["cityTo"];
+                    lety.Cena = item["price"];
+                    lety.Duration = toHHMMSS((double)item["duration"]["total"]);
+                    lety.dateFrom = UnixTimeStampToDateTime((double)item["dTime"]);
+                    letList.Add(lety);
+
+                    i++;
+                    id += "," + i;
+                }
+                id += "]";
+                ViewBag.setId = id;
+                ViewBag.setRoutes = jItem.data;
+                return letList;
             }
-            
-            ViewBag.setRoutes = jItem.data;
             return letList;
         }
 
@@ -225,23 +246,65 @@ namespace MvcFlightFinder.Controllers
             return "";
         }
 
-        public ActionResult Delete() {
-
-            return View();
-        }
         public ActionResult Delete(int id)
         {
 
             return View();
         }
 
+        public ActionResult Booking(int id) {
+            string firstName = "";
+            string lastName = "";
+
+            ViewBag.from = letList[id].From;
+            ViewBag.To = letList[id].To;
+            ViewBag.Cena = letList[id].Cena.ToString();
+            foreach (var item in userList) {
+                firstName = item.Firstname;
+                lastName = item.Lastname;
+
+            }
+            ViewBag.FirstName = firstName;
+            ViewBag.LastName = lastName;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Booking(int id, string LastName, string FirstName, int Peoples, string Gender ) {
+          
+            BookedFlights booked = new BookedFlights();
+            booked.Users_id = (int)Session["Id"];
+            booked.FirstName = FirstName;
+            booked.LastName = LastName;
+            booked.FlyFrom = letList[id].From;
+            booked.FlyTo = letList[id].To;
+            booked.Datefrom = letList[id].dateFrom;
+            booked.Dateofres = DateTime.Today.ToString();
+            booked.Peoples = Peoples;
+            booked.Price = letList[id].Cena;
+            booked.Gender = Gender;
+
+           
+
+            BookedFlightsSQLMapper.Insert(booked);
+            return Redirect("/Home/BookedList");
+        }
+        public ActionResult BookedList()
+        {
+            var booked = BookedFlightsSQLMapper.getBookedList((int)Session["Id"]);
+            if(booked.Count != 0)
+            {
+                return View(booked);
+            }
+            ViewBag.Warn = "Nemáte žádné zakoupené letenky";
+            return View(booked);
+        }
         public static string UnixTimeStampToDateTime(double unixTimeStamp)
         {
             // Unix timestamp is seconds past epoch
             System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
-
-           
+            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();         
             return dtDateTime.ToString();
         }
 

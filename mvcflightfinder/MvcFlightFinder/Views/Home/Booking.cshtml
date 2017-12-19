@@ -1,0 +1,90 @@
+﻿@model MvcFlightFinder.DataMapper.BookedFlights
+
+@{
+    ViewBag.Title = "Booking";
+}
+<div class="boxForm">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <h2>Zakoupit letenku</h2>
+    <div class="card">
+        
+        <div class="card-header">
+            <h3>@Html.Raw(ViewBag.From) -> @Html.Raw(ViewBag.To)</h3> <br />
+            
+          
+        </div>
+        <div class="card-body">
+            <div class="form-horizontal">
+                <h4>BookedFlights</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="row">
+                      
+                        <div class="col">
+                            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @id = "firstName" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                      
+                        <div class="col">
+                            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @id= "lastName" } })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                       
+                        <div class="col">
+                            @Html.LabelFor(model => model.Peoples, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Peoples, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Peoples, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col">
+                           
+                            <div class="col">
+                                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="form-group">
+
+                <div class="col-md-offset-2 col-md-12 text-right">
+                    <h4>Cena: @Html.Raw(ViewBag.Cena) Kč</h4>
+                    <input type="submit" value="Zaplatit" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    }
+   
+</div>
+
+<script>
+
+    var firstname = "@Html.Raw(ViewBag.FirstName)";
+    var lastname = "@Html.Raw(ViewBag.LastName)"
+    $('#firstName').val(firstname);
+    $('#lastName').val(lastname);
+    console.log(name);
+
+
+
+
+
+</script>

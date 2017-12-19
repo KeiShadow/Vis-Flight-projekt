@@ -4,51 +4,60 @@
     ViewBag.Title = "View";
 }
 
-<h2>View</h2>
-<div class="container">
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FlyFrom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FlyTo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Datefrom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FlyFrom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FlyTo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Datefrom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Idf }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Idf }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Idf })
-                </td>
-            </tr>
-        }
+    
+    <div class="container">
+        <div class="card ods">
+            <div class="card-header">
+                <h2>Favorite flight List</h2>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FlyFrom)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FlyTo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Datefrom)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th></th>
+                    </tr>
 
-    </table>
-</div>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FlyFrom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FlyTo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Datefrom)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Idf }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Idf }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Idf })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                </div>
+            <div class="card-footer">
+                <h1 class="alert-danger">@ViewBag.Warn</h1>
+            </div>
+            </div>
+        </div>
+                
 

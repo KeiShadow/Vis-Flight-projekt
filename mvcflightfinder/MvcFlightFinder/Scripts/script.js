@@ -1,10 +1,14 @@
 ﻿var concat = new Array();
 var lineSymbol;
+
+
+
 $(document).ready(function () {
     setDate();
     initMap();
    /* var flightFrom = $("#datalistFrom option[value='" + $('#srchFrom').val() + "']").attr('data-id');
     var flightTo = $("#datalistFrom option[value='" + $('#srchTo').val() + "']").attr('data-id');*/
+  
 
 });
 

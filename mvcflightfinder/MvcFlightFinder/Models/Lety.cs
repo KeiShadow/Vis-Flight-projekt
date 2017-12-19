@@ -16,7 +16,7 @@ namespace MvcFlightFinder.Models
 
         public string To { get; set; }
 
-        public string Cena { get; set; }
+        public int Cena { get; set; }
 
         public string dateFrom { get; set; }
 

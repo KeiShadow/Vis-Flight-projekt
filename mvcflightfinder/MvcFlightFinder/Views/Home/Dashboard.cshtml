@@ -3,11 +3,21 @@
         ViewBag.Title = "Dashboard";
     }
     <div class="container">
-        <h1>Dashboard</h1>
+       <div class="card ods">
+           <div class="card-header">
+               <h1>Uživatelská nástěnka</h1>
+           </div>
+           <div class="card-body">
+               <h2>Vítejte uživateli: @Session["Login"]</h2>
+               <p> Pro vyhledání letu klikněte sem: @Html.ActionLink("Vyhledat let", "findFlights", "Home")</p>
+               <p> Pro oblíbené lety klikněte sem: @Html.ActionLink("Oblíbené lety", "FavoriteFligths", "Home", new { id = Session["Id"] }) </p>
+               <p> Pro zakoupené letenky klikněte sem: @Html.ActionLink("Zakoupené letenky", "BookedList", "Home", new { id = Session["Id"] }) </p>
 
-        <h2>Vítejte uživateli: @Session["Login"]</h2>
-        <p> Pro vyhledání letu klikněte sem: @Html.ActionLink("Vyhledat let", "findFlights", "Home")</p>
-        <p> Pro oblíbené lety klikněte sem: @Html.ActionLink("Oblíbené lety", "FavoriteFligths", "Home") </p>
+           </div>
+       </div>
+           
 
+            
+      
     </div>
 

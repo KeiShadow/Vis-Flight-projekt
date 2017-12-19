@@ -19,6 +19,7 @@
     <script type="text/javascript" src="@Url.Content("/Scripts/script.js")"></script>
     <script src="http://cdn.syncfusion.com/js/web/ej.web.all-latest.min.js"></script>
     <script src="http://cdn.syncfusion.com/js/web/ej.unobtrusive-latest.min.js"></script>
+    <script src="~/Scripts/moment.js"></script>
 </head>
 <body>
     
@@ -40,14 +41,11 @@
                                 @{ if (Session["Login"] != null)
                                     {
                                         @Html.ActionLink("Nástěnka", "Dashboard", "Home", new { @class = "nav-link " })      
-                                        @Html.ActionLink("Oblíbené lety", "FavoriteFlights", "Home", new { @class = "nav-link " })
+                                        @Html.ActionLink("Oblíbené lety", "FavoriteFligths", "Home", new { @class = "nav-link " })
+                                        @Html.ActionLink("Zakoupené lety", "BookedList", "Home", new { @class = "nav-link " })
                                         @Html.ActionLink("Nastaveni profilu", "", "Home", new { @class = "nav-link " })
                                         @Html.ActionLink("Odhlásit se", "LogOut", "Home", new { @class = "nav-link " })
-                                    }
-                                    else if (Session["Perm"] != null)
-                                    {
-                                        @Html.ActionLink("Administrace", "", "Home", new { @class = "nav-link " })
-                                        @Html.ActionLink("Odhlásit se", "LogOut", "Home", new { @class = "nav-link " })
+
                                     }
                                     else
                                     {

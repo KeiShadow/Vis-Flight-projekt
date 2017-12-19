@@ -5,10 +5,12 @@
 #map {
     height: 100%;
 }
-
+.ods{
+    margin-top: 50px;
+}
 .boxForm {
     /*padding: 6em,0em,0em,0em;*/
-    margin-left: 30%;
+    margin-left: 25%;
     margin-top: 10%;
     width:50%;
     

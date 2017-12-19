@@ -34,10 +34,11 @@
             </a>
             <div class="collapse" id="@Html.DisplayFor(modelItem => item.IdCollapse)">
                 <div class="card-block">
-                       
+                    <p id="r+@Html.DisplayFor(modelItem => item.Id)"></p>
                     @if (Session["Login"] != null)
                     { <div class="col">
                         @Html.ActionLink("Přidat do oblíbených", "setFavFlight", "Home", new { id = item.Id }, null)
+                          @Html.ActionLink("Zakoupit letenku", "booking", "Home", new { id = item.Id }, null)
                     </div>
                     }
                      else
@@ -58,7 +59,7 @@
 
   }
  
-       
+  <h1 class="alert-danger">@ViewBag.Warn</h1>     
 </div>
 </div>
 
@@ -76,10 +77,32 @@
 
 
 <script type="text/javascript">
-    locations = @Html.Raw(ViewBag.LokMapa);
+    var locations = @Html.Raw(ViewBag.LokMapa);
     var routes = @Html.Raw(ViewBag.setRoutes);
-   
-  
+    var id = @Html.Raw(ViewBag.setId);
+
+    for (var i = 0; i < id.length; i++) {
+        document.getElementById('r+' + i + '').innerHTML = Prestupy(routes, i);
+    }
+
+    function Prestupy(routes, i) {
+        var neco = "";
+        for (var x = 0; x < routes[i]["route"].length; x++) {
+            neco += "<div class=\"col\"> <ul class=\"list-group\"> <li class=\"list-group-item\"> " +
+                convertTime(routes[i]["route"][x].dTime) + ": " +
+                routes[i]["route"][x].cityFrom + "<br> " +
+                convertTime(routes[i]["route"][x].aTime) + ": " +
+                routes[i]["route"][x].cityTo +
+                "</li></ul><br></div>";
+        }
+
+        return neco;
+    }
+    function convertTime(timestamp) {
+        return moment.unix(timestamp).format("DD/MM/YYYY HH:MM");
+    }
+
+
      function setRoutes(i) {
         $("#collapse" + i).on('show.bs.collapse', function () {
                         tem = true;
@@ -95,22 +118,10 @@
         concat = new Array();
         clearTrack();
         })
-        
+
     }
 
-function Prestupy(routes, i) {
-    var  neco = "";
-    for (var x = 0; x < routes[i]["route"].length; x++) {
-        neco += "<div class=\"col\"> <ul class=\"list-group\"> <li class=\"list-group-item\"> " +
-            //convertTime(routes[i]["route"][x].dTime) + ": " +
-            routes[i]["route"][x].cityFrom + "<br> " +
-            // convertTime(routes[i]["route"][x].aTime) + ": " +
-            routes[i]["route"][x].cityTo +
-            "</li></ul><br></div>";
-    }
 
-    return neco;
-}
 
 
 

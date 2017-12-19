@@ -164,8 +164,13 @@ Insert INTO UserToFav (Users_Id,FavoriteFligths_Idf)
 Values(2,5)
 
 Select * from Users
+
+Select * from BookedFlights
+Delete from BookedFlights where Idb = 2
+
+ALTER TABLE BookedFlights ADD LastName VARCHAR(50) NOT NULL, FirstName VARCHAR(50) NOT NULL, Gender Char NOT NULL ; 
+
 Select * from FavoriteFligths 
-Select * from UserToFav
 
 select flyFrom,flyTo,DateFrom,Price from FavoriteFligths ff 
 Join UserToFav usTofav ON usTofav.FavoriteFligths_Idf = ff.Idf 
@@ -174,5 +179,5 @@ JOin Users us ON us.Id = usTofav.Users_Id Where us.Id=1
 EXEC sp_RENAME 'BookedFlights.From', 'flyFrom', 'COLUMN'
 EXEC sp_RENAME 'BookedFlights.To', 'flyTo', 'COLUMN'
 
-ALTER TABLE FavoriteFligths 
-ALTER COLUMN DateFrom VARCHAR(50) 
+ALTER TABLE BookedFlights 
+ALTER COLUMN DateOfRes VARCHAR(50) 
