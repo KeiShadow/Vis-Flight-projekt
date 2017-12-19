@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MvcFlightFinder.DataMapper.FavoriteFligths>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+<div class="container">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FlyFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlyTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datefrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FlyFrom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FlyTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datefrom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Idf }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Idf }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Idf })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

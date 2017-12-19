@@ -14,10 +14,10 @@ namespace MvcFlightFinder.SQLMapper
         private static List<Users> usersList = new List<Users>();
 
         public static string SQL_SINGLE_SELECT = "SELECT * FROM Users WHERE id = @id";
-        public static string SQL_INSERT = "INSERT INTO Users VALUES (@login, @email, @password, @permission)";
+        public static string SQL_INSERT = "INSERT INTO Users VALUES (@Nick, @Email, @Password, @Firstname,@Lastname)";
         public static string SQL_SELECT = "SELECT * FROM Users";
-        public static string SQL_UPDATE = "UPDATE Users SET login = @login, email=@email, password=@password WHERE id=@id";
-        public static string SQL_SELECT_LOGIN = "SELECT * FROM Users WHERE email = @email AND password = @password";
+        public static string SQL_UPDATE = "UPDATE Users SET Nick = @Nick, Email=@Email, Password=@Password WHERE id=@id";
+        public static string SQL_SELECT_LOGIN = "SELECT * FROM Users WHERE Email = @Email AND Password = @Password";
 
         public static List<Users> Users { get => usersList; set => usersList = value; }
 
@@ -127,11 +127,12 @@ namespace MvcFlightFinder.SQLMapper
 
         private static void PrepareCommand(SqlCommand command, Users User)
         {
-            command.Parameters.AddWithValue("@id", User.id);
-            command.Parameters.AddWithValue("@login", User.login);
-            command.Parameters.AddWithValue("@email", User.email);
-            command.Parameters.AddWithValue("@password", User.password);
-            command.Parameters.AddWithValue("@permission", User.permision);
+            command.Parameters.AddWithValue("@id", User.Id);
+            command.Parameters.AddWithValue("@Nick", User.Nick);
+            command.Parameters.AddWithValue("@email", User.Email);
+            command.Parameters.AddWithValue("@password", User.Password);
+            command.Parameters.AddWithValue("@Firstname", User.Firstname);
+            command.Parameters.AddWithValue("@Lastname", User.Lastname);
         }
 
         private static void PrepareCommand(SqlCommand command, string email, string password)
@@ -157,11 +158,12 @@ namespace MvcFlightFinder.SQLMapper
             {
                 int i = -1;
                 Users user = new Users();
-                user.id = reader.GetInt32(++i);
-                user.login = reader.GetString(++i);
-                user.email = reader.GetString(++i);
-                user.password = reader.GetString(++i);
-                user.permision = reader.GetString(++i);
+                user.Id = reader.GetInt32(++i);
+                user.Nick = reader.GetString(++i);
+                user.Email = reader.GetString(++i);
+                user.Password = reader.GetString(++i);
+                user.Firstname = reader.GetString(++i);
+                user.Lastname = reader.GetString(++i);
                 users.Add(user);
             }
             return users;

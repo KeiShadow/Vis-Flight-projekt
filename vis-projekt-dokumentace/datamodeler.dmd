@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="datamodeler" id="B89D5ED5-8F93-C955-EEFC-09C2BA2184AC" version="3.5">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:32:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>B89D5ED5-8F93-C955-EEFC-09C2BA2184AC</designId>
+</OSDM_Design>

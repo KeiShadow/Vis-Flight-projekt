@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_2" directorySegmentName="seg_0" id="95BF8DC3-ADE9-26DB-BA06-22E1CB5BF141">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:49:42 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="6FC443BD-6674-D7FB-2A98-4F2B8316B91A" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>38EE7CA0-461A-8A88-83B0-C13A41401BA9</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>C2962292-EBA5-3EA2-C1AA-0E4FF5967B2C</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -23,8 +24,8 @@ namespace MvcFlightFinder.Controllers
         static List<Location> locList = new List<Location>();
         static List<Lety> letList = new List<Lety>();
         static List<Form> formList = new List<Form>();
-        static List<FavFlightsSQLMapper> favF = new List<FavFlightsSQLMapper>();
-        static Collection<Favorite_fligths> favList = new Collection<Favorite_fligths>();
+        static List<FavoriteFligthsSQLMapper> favF = new List<FavoriteFligthsSQLMapper>();
+        static Collection<FavoriteFligths> favList = new Collection<FavoriteFligths>();
         static List<Users> userList = new List<Users>();
 
         public ActionResult findFlights()
@@ -76,35 +77,35 @@ namespace MvcFlightFinder.Controllers
         public ActionResult Login(Users user)
         {
 
-            var usr = UsersSQLMapper.Where(user.email, user.password).ToArray();
+            var usr = UsersSQLMapper.Where(user.Email, user.Password).ToArray();
 
             if (usr != null)
             {
              foreach (var item in usr)
                 {
-                    user.id = item.id;
-                    user.login = item.login;
-                    user.email = item.email;
+                    user.Id = item.Id;
+                    user.Nick = item.Nick;
+                    user.Email = item.Email;
                    
                 }
 
 
-                Session["userID"] = user.id;
-                Session["Email"] = user.email.ToString();
-                Session["Login"] = user.login.ToString();
+                Session["userID"] = user.Id;
+                Session["Email"] = user.Email.ToString();
+                Session["Login"] = user.Nick.ToString();
                 userList.Add(user);
                 return Redirect("/Home/Dashboard");
             }
             else
             {
-                ModelState.AddModelError("", "Login or password incorrected.");
+                ModelState.AddModelError("", "Email or password incorrected.");
             }
             return View();
         }
 
-        public ActionResult FavoriteFlights() {
+        public ActionResult FavoriteFligths() {
 
-            var fav = FavFlightsSQLMapper.getFavFlights((int)Session["userID"]);
+            var fav = FavoriteFligthsSQLMapper.getFavFlights((int)Session["userID"]);
 
             return View(fav);
         }
@@ -112,16 +113,16 @@ namespace MvcFlightFinder.Controllers
         [HttpGet]
         public ActionResult setFavFlight(int id) {
 
-           
-            Favorite_fligths favorite = new Favorite_fligths();
-            favorite.iduser = (int)Session["userId"];
-            favorite.flightFrom = letList[id].From;
-            favorite.flightTo = letList[id].To;
-            favorite.dateFrom = letList[id].dateFrom;
-            favorite.price = letList[id].Cena+"Kč";
 
-            FavFlightsSQLMapper.Insert(favorite);
-            return Redirect("/Home/FavoriteFlights");
+            FavoriteFligths favorite = new FavoriteFligths();
+            favorite.IdUser= (int)Session["userId"];
+            favorite.FlyFrom = letList[id].From;
+            favorite.FlyTo = letList[id].To;
+            favorite.Datefrom = letList[id].dateFrom;
+            favorite.Price = Int32.Parse(letList[id].Cena);
+
+            FavoriteFligthsSQLMapper.Insert(favorite);
+            return Redirect("/Home/FavoriteFligths");
         }
 
         public ActionResult LogOut() {
@@ -136,47 +137,23 @@ namespace MvcFlightFinder.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Registration( string login, string email, string password, string firstName, string lastName)
+        public ActionResult Registration( string Nick, string email, string password, string firstName, string lastName)
         {
             
 
             Users users = new Users();
-            users.login = login;
-            users.email = email;
-            users.password = password;
-            users.permision = "u";
+            users.Nick = Nick;
+            users.Email = email;
+            users.Password = password;
+            users.Firstname = firstName;
+            users.Lastname = lastName;
+
             userList.Add(users);
             UsersSQLMapper.Insert(users);
 
-            return Redirect("/Home/Settings");
+            return Redirect("/Home/Dashboard");
         }
-        public ActionResult Settings() {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Settings(string firstName, string lastName) {
-
-            string email = "";
-            string password = "";
-            foreach (var item in userList) {
-                email = item.email;
-                password = item.password;
-            }
-        var usr = UsersSQLMapper.Where(email, password).ToArray();
-          int id = 0;
-          foreach (var item in usr) {
-              id = item.id;
-          }
-
-
-          Settings set = new Settings();
-          set.iduser = id;
-          set.password = password;
-          set.firstName = firstName;
-          set.lastName = lastName;
-
-            return Redirect("/Home/Login");
-        }
+        
 
         public string getPlaces()
         {
@@ -263,6 +240,8 @@ namespace MvcFlightFinder.Controllers
             // Unix timestamp is seconds past epoch
             System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
             dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+
+           
             return dtDateTime.ToString();
         }
 

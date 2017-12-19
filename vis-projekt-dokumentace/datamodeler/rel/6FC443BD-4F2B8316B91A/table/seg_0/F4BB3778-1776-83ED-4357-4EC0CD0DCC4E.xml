@@ -1,0 +1,131 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F4BB3778-1776-83ED-4357-4EC0CD0DCC4E" name="BookedFlights">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:51:07 UTC</createdTime>
+<generatorID>338F28BF-433A-28C4-EE61-A1F1CAD9CFC2</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Idb" id="C4762F62-9F72-EC42-1315-C891C349F396">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:51:08 UTC</createdTime>
+<generatorID>6485D5B9-BE93-B5DD-C039-0A91528CE426</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="From" id="396391E1-63E6-83D8-AA53-5AFF2B9AE77A">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:51:08 UTC</createdTime>
+<generatorID>BB9CF14E-CCA1-6F69-BA84-3A1C5483D758</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="To" id="6BA00B79-57B7-EE7A-00D7-8738AC8B82D6">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:51:08 UTC</createdTime>
+<generatorID>3B34A55C-E23C-E533-8C5A-014260EA072C</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DateFrom" id="8FCB7D03-AB52-C676-C9A7-2B66F6B3F068">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:51:08 UTC</createdTime>
+<generatorID>D5E8DB4F-59E5-262C-4023-DE85A3AA676A</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Peoples" id="9833EF9B-9A02-A524-24D5-6E8FC20E340C">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:51:08 UTC</createdTime>
+<generatorID>CA888300-E73F-4675-592B-4C9AD16D6E7F</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Price" id="CBCEED31-7356-7165-E5E0-A9832AE79CBB">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:51:08 UTC</createdTime>
+<generatorID>E708307E-B453-F875-D657-ED2559E7F4B0</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Users_Id" id="38118689-B725-4066-DFC8-162A706BC69A">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:51:08 UTC</createdTime>
+<generatorID>EA0A35E7-8336-E6DF-E4EF-F87EE13E879E</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C28B9EF6-03BD-7CFA-8596-806AD2B893CB" referredColumn="AB3A2A50-3397-8674-5936-4C3828013421"/>
+</associations>
+</Column>
+<Column name="DateOfRes" id="F84C7FEF-0363-FD0D-1832-DEB06C461F17">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:51:08 UTC</createdTime>
+<generatorID>F495CE66-F40D-FBCC-9D88-F69DA7F9B7E3</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="842F5BAC-A001-2C6F-1180-E976D374B120" name="BookedFlights_PK">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:51:08 UTC</createdTime>
+<generatorID>4D5D66C0-1CF8-CEF3-A3C2-2428E60B82C1</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C4762F62-9F72-EC42-1315-C891C349F396"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F49F35B0-F217-51F8-611F-414D49F8A333" name="BookedFlights_Users_FK">
+<createdBy>nskyp</createdBy>
+<createdTime>2017-12-18 20:51:08 UTC</createdTime>
+<generatorID>4D7497C1-1B5D-D767-9524-77DE20301E1A</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="38118689-B725-4066-DFC8-162A706BC69A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

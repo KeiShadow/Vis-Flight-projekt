@@ -11,7 +11,6 @@ namespace MvcFlightFinder.DataMapper
         public string password { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        
-        public int iduser { get; set; }
+        public Users iduser { get; set; }
     }
 }
