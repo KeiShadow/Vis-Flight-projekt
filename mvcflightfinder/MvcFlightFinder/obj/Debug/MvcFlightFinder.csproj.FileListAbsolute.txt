@@ -47,3 +47,5 @@ D:\GitHub\Vis-Flight-projekt\MvcFlightFinder\MvcFlightFinder\obj\Debug\MvcFlight
 D:\GitHub\Vis-Flight-projekt\MvcFlightFinder\MvcFlightFinder\obj\Debug\MvcFlightFinder.csproj.CoreCompileInputs.cache
 D:\GitHub\Vis-Flight-projekt\MvcFlightFinder\MvcFlightFinder\obj\Debug\MvcFlightFinder.dll
 D:\GitHub\Vis-Flight-projekt\MvcFlightFinder\MvcFlightFinder\obj\Debug\MvcFlightFinder.pdb
+D:\GitHub\Vis-Flight-projekt\mvcflightfinder\MvcFlightFinder\bin\DBHandler.dll
+D:\GitHub\Vis-Flight-projekt\mvcflightfinder\MvcFlightFinder\bin\DBHandler.pdb

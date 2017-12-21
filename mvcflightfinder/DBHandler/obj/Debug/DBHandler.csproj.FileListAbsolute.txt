@@ -1,0 +1,6 @@
+D:\GitHub\Vis-Flight-projekt\mvcflightfinder\DBHandler\bin\Debug\DBHandler.dll
+D:\GitHub\Vis-Flight-projekt\mvcflightfinder\DBHandler\bin\Debug\DBHandler.pdb
+D:\GitHub\Vis-Flight-projekt\mvcflightfinder\DBHandler\obj\Debug\DBHandler.csprojResolveAssemblyReference.cache
+D:\GitHub\Vis-Flight-projekt\mvcflightfinder\DBHandler\obj\Debug\DBHandler.csproj.CoreCompileInputs.cache
+D:\GitHub\Vis-Flight-projekt\mvcflightfinder\DBHandler\obj\Debug\DBHandler.dll
+D:\GitHub\Vis-Flight-projekt\mvcflightfinder\DBHandler\obj\Debug\DBHandler.pdb

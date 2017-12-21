@@ -1,21 +1,20 @@
-﻿using MvcFlightFinder.DataMapper;
+﻿using DBHandler.DataMapper;
+using DBHandler.SQLMapper;
+
 using MvcFlightFinder.Models;
-using MvcFlightFinder.SQLMapper;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Globalization;
+
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Mail;
-using System.Web;
+
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using System.Xml.Linq;
+
 
 namespace MvcFlightFinder.Controllers
 {
@@ -126,7 +125,7 @@ namespace MvcFlightFinder.Controllers
 
 
             FavoriteFligths favorite = new FavoriteFligths();
-            favorite.IdUser= (int)Session["userId"];
+            favorite.IdUser= (int)Session["Id"];
             favorite.FlyFrom = letList[id].From;
             favorite.FlyTo = letList[id].To;
             favorite.Datefrom = letList[id].dateFrom;
