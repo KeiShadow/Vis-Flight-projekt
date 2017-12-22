@@ -101,7 +101,7 @@ namespace DBHandler.SQLMapper
             return users;
         }
 
-        // GET USER by ID
+        // Login where
         // --------------
 
         public static Collection<Users> Where(string email, string password)

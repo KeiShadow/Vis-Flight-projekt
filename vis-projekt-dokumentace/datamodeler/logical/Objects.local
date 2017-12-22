@@ -1,8 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<oracle.dbtools.crest.model.design.logical.LogicalDesign>
-   <object objectType="Entity" objectID="338F28BF-433A-28C4-EE61-A1F1CAD9CFC2" name="BookedFlights" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="9AAB6950-DAF9-9D51-54CF-CF324B84DFEE" propertySourceId="" propertyTargetId=""/>
-   <object objectType="Entity" objectID="C2962292-EBA5-3EA2-C1AA-0E4FF5967B2C" name="FavoriteFligths" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="9AAB6950-DAF9-9D51-54CF-CF324B84DFEE" propertySourceId="" propertyTargetId=""/>
-   <object objectType="Entity" objectID="38EE7CA0-461A-8A88-83B0-C13A41401BA9" name="Users" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="9AAB6950-DAF9-9D51-54CF-CF324B84DFEE" propertySourceId="" propertyTargetId=""/>
-   <object objectType="Relation" objectID="4D7497C1-1B5D-D767-9524-77DE20301E1A" name="BookedFlights Users FK" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Relation" propertyParentId="9AAB6950-DAF9-9D51-54CF-CF324B84DFEE" propertySourceId="38EE7CA0-461A-8A88-83B0-C13A41401BA9" propertyTargetId="338F28BF-433A-28C4-EE61-A1F1CAD9CFC2"/>
-   <object objectType="Relation" objectID="95BF8DC3-ADE9-26DB-BA06-22E1CB5BF141" name="Relation_2" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Relation" propertyParentId="9AAB6950-DAF9-9D51-54CF-CF324B84DFEE" propertySourceId="38EE7CA0-461A-8A88-83B0-C13A41401BA9" propertyTargetId="C2962292-EBA5-3EA2-C1AA-0E4FF5967B2C"/>
-</oracle.dbtools.crest.model.design.logical.LogicalDesign>

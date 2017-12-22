@@ -42,7 +42,7 @@
                        
                         <div class="col">
                             @Html.LabelFor(model => model.Peoples, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.Peoples, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Peoples, new { htmlAttributes = new { @class = "form-control", onchange = "OnChangeEvent()", @id= "numeric" } })
                             @Html.ValidationMessageFor(model => model.Peoples, "", new { @class = "text-danger" })
                         </div>
                         <div class="col">
@@ -61,7 +61,7 @@
             <div class="form-group">
 
                 <div class="col-md-offset-2 col-md-12 text-right">
-                    <h4>Cena: @Html.Raw(ViewBag.Cena) Kč</h4>
+                    <h4 id="price">Cena: @Html.Raw(ViewBag.Cena) Kč</h4>
                     <input type="submit" value="Zaplatit" class="btn btn-default" />
                 </div>
             </div>
@@ -83,7 +83,11 @@
     $('#lastName').val(lastname);
     console.log(name);
 
-
+   
+ function OnChangeEvent(){
+    alert("value is changed");
+    console.log($('numeric').text);
+ }
 
 
 

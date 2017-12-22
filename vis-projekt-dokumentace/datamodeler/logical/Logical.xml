@@ -1,7 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="9AAB6950-DAF9-9D51-54CF-CF324B84DFEE" mainViewID="BDE28E9D-F5C3-7965-F6E3-F1B188564681">
-<createdBy>nskyp</createdBy>
-<createdTime>2017-12-18 20:32:02 UTC</createdTime>
-<ownerDesignName>datamodeler</ownerDesignName>
-<shouldBeOpen>false</shouldBeOpen>
-</LogicalDesign>

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace FlightFroms.Forms
 {
@@ -19,7 +20,7 @@ namespace FlightFroms.Forms
         int id = 0;
         string Nick = "";
         static Collection<FavoriteFligths> listFav;
-        static Collection<BookedFlights> listRes;
+        static Collection<BookedFlights> listBooked;
           
         public Dashboard()
         {
@@ -32,8 +33,8 @@ namespace FlightFroms.Forms
             listFav = FavoriteFligthsSQLMapper.getFavFlights(id);
             dataGridView1.DataSource = listFav;
 
-            listRes = BookedFlightsSQLMapper.getBookedList(id);
-            dataGridView2.DataSource = listRes;
+            listBooked = BookedFlightsSQLMapper.getBookedList(id);
+            dataGridView2.DataSource = listBooked;
 
             var deleteButtonFav = new DataGridViewButtonColumn();
             deleteButtonFav.Name = "dataGridViewDeleteButton";
@@ -74,6 +75,9 @@ namespace FlightFroms.Forms
         {
             Collection<FavoriteFligths> listFav = FavoriteFligthsSQLMapper.getFavFlights(id);
             dataGridView1.DataSource = listFav;
+
+            Collection<BookedFlights> listBooked = BookedFlightsSQLMapper.getBookedList(id);
+            dataGridView2.DataSource = listBooked;
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -86,12 +90,11 @@ namespace FlightFroms.Forms
             if (e.ColumnIndex == dataGridView2.Columns["dataGridView2DeleteButton"].Index)
             {
                 //Put some logic here, for example to remove row from your binding list.
-                foreach (var item in listFav)
+                foreach (var item in listBooked)
                 {
-                    id = item.Idf;
+                    id = item.Idb;
                 }
                 BookedFlightsSQLMapper.Delete(id);
-
             }
         }
 
@@ -99,6 +102,20 @@ namespace FlightFroms.Forms
         {
             FindFlight findFlight = new FindFlight();
             findFlight.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Login.listUsers.Clear();
+            Dashboard.listBooked.Clear();
+            Dashboard.listFav.Clear();
+            Login login = new Login();
+            login.Show();
             this.Hide();
         }
     }

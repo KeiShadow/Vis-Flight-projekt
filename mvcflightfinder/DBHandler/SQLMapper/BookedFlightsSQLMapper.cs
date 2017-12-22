@@ -17,7 +17,7 @@ namespace DBHandler.SQLMapper
 
         public static List<BookedFlights> favFlight { get => favFlight; set => favFlight = value; }
 
-        public static int Insert(BookedFlights book)
+        public static int Insert(BookedFlights booked)
         {
 
             Database db;
@@ -25,7 +25,7 @@ namespace DBHandler.SQLMapper
             db.Connect();
 
             SqlCommand command = db.CreateCommand(SQL_INSERT);
-            PrepareCommand(command, book);
+            PrepareCommand(command, booked);
             int ret = db.ExecuteNonQuery(command);
 
             db.Close();
@@ -113,9 +113,6 @@ namespace DBHandler.SQLMapper
 
         }
 
-        internal static void Insert(List<BookedFlights> bookList)
-        {
-            throw new NotImplementedException();
-        }
+     
     }
 }

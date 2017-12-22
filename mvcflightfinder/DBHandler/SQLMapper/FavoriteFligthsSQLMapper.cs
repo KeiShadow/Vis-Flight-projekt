@@ -69,7 +69,7 @@ namespace DBHandler.SQLMapper
 
         private static Collection<FavoriteFligths> Read(SqlDataReader reader)
         {
-            Collection<FavoriteFligths> bookFli = new Collection<FavoriteFligths>();
+            Collection<FavoriteFligths> favFlight = new Collection<FavoriteFligths>();
 
             while (reader.Read())
             {
@@ -81,9 +81,9 @@ namespace DBHandler.SQLMapper
                 fav.FlyTo = reader.GetString(++i);
                 fav.Datefrom = reader.GetString(++i);
                 fav.Price = reader.GetInt32(++i);
-                bookFli.Add(fav);
+                favFlight.Add(fav);
             }
-            return bookFli;
+            return favFlight;
         }
 
         private static void PrepareCommand(SqlCommand command, int id)

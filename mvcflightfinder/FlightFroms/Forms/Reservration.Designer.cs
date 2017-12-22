@@ -118,9 +118,9 @@
             // fromTo
             // 
             this.fromTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fromTo.Location = new System.Drawing.Point(94, 20);
+            this.fromTo.Location = new System.Drawing.Point(12, 20);
             this.fromTo.Name = "fromTo";
-            this.fromTo.Size = new System.Drawing.Size(185, 41);
+            this.fromTo.Size = new System.Drawing.Size(315, 41);
             this.fromTo.TabIndex = 13;
             this.fromTo.Text = "FROM TO";
             // 

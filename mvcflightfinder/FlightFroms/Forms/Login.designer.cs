@@ -34,6 +34,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.bt_Reg = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label9
@@ -50,7 +51,7 @@
             // 
             this.LoginButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.LoginButton.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.LoginButton.Location = new System.Drawing.Point(77, 218);
+            this.LoginButton.Location = new System.Drawing.Point(77, 203);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(100, 44);
             this.LoginButton.TabIndex = 21;
@@ -91,11 +92,24 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "E-mail";
             // 
+            // bt_Reg
+            // 
+            this.bt_Reg.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.bt_Reg.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.bt_Reg.Location = new System.Drawing.Point(77, 262);
+            this.bt_Reg.Name = "bt_Reg";
+            this.bt_Reg.Size = new System.Drawing.Size(100, 44);
+            this.bt_Reg.TabIndex = 23;
+            this.bt_Reg.Text = "Register";
+            this.bt_Reg.UseVisualStyleBackColor = false;
+            this.bt_Reg.Click += new System.EventHandler(this.bt_Reg_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(255, 318);
+            this.Controls.Add(this.bt_Reg);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.textBox2);
@@ -117,6 +131,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bt_Reg;
     }
 }
 

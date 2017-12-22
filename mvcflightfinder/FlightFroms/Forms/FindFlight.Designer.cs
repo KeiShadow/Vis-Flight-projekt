@@ -44,7 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tb_To = new System.Windows.Forms.TextBox();
             this.tb_From = new System.Windows.Forms.TextBox();
-            this.panelMap = new System.Windows.Forms.FlowLayoutPanel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -178,14 +177,6 @@
             this.tb_From.Size = new System.Drawing.Size(100, 20);
             this.tb_From.TabIndex = 0;
             // 
-            // panelMap
-            // 
-            this.panelMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelMap.Location = new System.Drawing.Point(409, 0);
-            this.panelMap.Name = "panelMap";
-            this.panelMap.Size = new System.Drawing.Size(740, 797);
-            this.panelMap.TabIndex = 0;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -193,13 +184,14 @@
             this.toolStripMenuItem2});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 70);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(184, 22);
             this.toolStripMenuItem1.Text = "Přidat do oblíbených";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -217,8 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1161, 800);
-            this.Controls.Add(this.panelMap);
+            this.ClientSize = new System.Drawing.Size(410, 800);
             this.Controls.Add(this.panelflight);
             this.Name = "FindFlight";
             this.Text = "z";
@@ -234,7 +225,6 @@
         private System.Windows.Forms.Panel panelflight;
         private System.Windows.Forms.TextBox tb_To;
         private System.Windows.Forms.TextBox tb_From;
-        private System.Windows.Forms.FlowLayoutPanel panelMap;
         private System.Windows.Forms.ListView listResult;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;

@@ -1,4 +1,7 @@
 ﻿
+using DBHandler.DataMapper;
+using DBHandler.SQLMapper;
+using FlightForms;
 using GMap.NET;
 using GMap.NET.WindowsForms;
 using Newtonsoft.Json.Linq;
@@ -20,6 +23,7 @@ namespace FlightFroms.Forms
 
         public  static List<Lety> letList = new List<Lety>();
         public int idselected;
+        public int userID;
 
         public FindFlight()
         {
@@ -66,8 +70,6 @@ namespace FlightFroms.Forms
                     lety.dateFrom = UnixTimeStampToDateTime((double)item["dTime"]);
                     letList.Add(lety);
 
-                   
-
                     ListViewItem lvi = new ListViewItem(i.ToString());
                     lvi.SubItems.Add((string)item["cityFrom"]);
                     lvi.SubItems.Add((string)item["cityTo"]);
@@ -105,8 +107,6 @@ namespace FlightFroms.Forms
                 if (listResult.FocusedItem.Bounds.Contains(e.Location) == true)
                 {
                     contextMenuStrip1.Show(Cursor.Position);
-                   ;
-
                 }
             }
         }
@@ -116,6 +116,24 @@ namespace FlightFroms.Forms
             Reservration reservration = new Reservration();
             reservration.idselected = int.Parse(listResult.FocusedItem.Text);
             reservration.Show();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+            foreach (var item in Login.listUsers)
+            {
+                id = item.Id;
+            }
+            idselected = int.Parse(listResult.FocusedItem.Text);
+            FavoriteFligths favorite = new FavoriteFligths();
+            favorite.IdUser = id;
+            favorite.FlyFrom = letList[idselected].From;
+            favorite.FlyTo = letList[idselected].To;
+            favorite.Datefrom = letList[idselected].dateFrom;
+            favorite.Price = letList[idselected].Cena;
+
+            FavoriteFligthsSQLMapper.Insert(favorite);
         }
     }
 }

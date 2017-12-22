@@ -31,12 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.flyFromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flyToDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datefromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.favoriteFligthsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.labelNick = new System.Windows.Forms.Label();
-            this.bt_RefreshFav = new System.Windows.Forms.Button();
             this.flyFromDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flyToDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datefromDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,15 +49,15 @@
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookedFlightsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.flyFromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flyToDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datefromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.favoriteFligthsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.labelNick = new System.Windows.Forms.Label();
+            this.bt_RefreshFav = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.favoriteFligthsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookedFlightsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.favoriteFligthsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -84,6 +86,34 @@
             this.dataGridView1.Size = new System.Drawing.Size(571, 150);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
+            // flyFromDataGridViewTextBoxColumn
+            // 
+            this.flyFromDataGridViewTextBoxColumn.DataPropertyName = "FlyFrom";
+            this.flyFromDataGridViewTextBoxColumn.HeaderText = "Fly From";
+            this.flyFromDataGridViewTextBoxColumn.Name = "flyFromDataGridViewTextBoxColumn";
+            // 
+            // flyToDataGridViewTextBoxColumn
+            // 
+            this.flyToDataGridViewTextBoxColumn.DataPropertyName = "FlyTo";
+            this.flyToDataGridViewTextBoxColumn.HeaderText = "Fly To";
+            this.flyToDataGridViewTextBoxColumn.Name = "flyToDataGridViewTextBoxColumn";
+            // 
+            // datefromDataGridViewTextBoxColumn
+            // 
+            this.datefromDataGridViewTextBoxColumn.DataPropertyName = "Datefrom";
+            this.datefromDataGridViewTextBoxColumn.HeaderText = "Date from";
+            this.datefromDataGridViewTextBoxColumn.Name = "datefromDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // favoriteFligthsBindingSource
+            // 
+            this.favoriteFligthsBindingSource.DataSource = typeof(DBHandler.DataMapper.FavoriteFligths);
             // 
             // label2
             // 
@@ -125,36 +155,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(1093, 155);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(19, 129);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 30);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Vyhledej let";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // labelNick
-            // 
-            this.labelNick.AutoSize = true;
-            this.labelNick.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNick.Location = new System.Drawing.Point(285, 45);
-            this.labelNick.Name = "labelNick";
-            this.labelNick.Size = new System.Drawing.Size(112, 31);
-            this.labelNick.TabIndex = 6;
-            this.labelNick.Text = "Uživatel";
-            // 
-            // bt_RefreshFav
-            // 
-            this.bt_RefreshFav.Location = new System.Drawing.Point(609, 206);
-            this.bt_RefreshFav.Name = "bt_RefreshFav";
-            this.bt_RefreshFav.Size = new System.Drawing.Size(89, 30);
-            this.bt_RefreshFav.TabIndex = 7;
-            this.bt_RefreshFav.Text = "Refresh";
-            this.bt_RefreshFav.UseVisualStyleBackColor = true;
-            this.bt_RefreshFav.Click += new System.EventHandler(this.bt_RefreshFav_Click);
             // 
             // flyFromDataGridViewTextBoxColumn1
             // 
@@ -214,39 +214,63 @@
             // 
             this.bookedFlightsBindingSource.DataSource = typeof(DBHandler.DataMapper.BookedFlights);
             // 
-            // flyFromDataGridViewTextBoxColumn
+            // button1
             // 
-            this.flyFromDataGridViewTextBoxColumn.DataPropertyName = "FlyFrom";
-            this.flyFromDataGridViewTextBoxColumn.HeaderText = "Fly From";
-            this.flyFromDataGridViewTextBoxColumn.Name = "flyFromDataGridViewTextBoxColumn";
+            this.button1.Location = new System.Drawing.Point(19, 129);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 30);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Vyhledej let";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // flyToDataGridViewTextBoxColumn
+            // labelNick
             // 
-            this.flyToDataGridViewTextBoxColumn.DataPropertyName = "FlyTo";
-            this.flyToDataGridViewTextBoxColumn.HeaderText = "Fly To";
-            this.flyToDataGridViewTextBoxColumn.Name = "flyToDataGridViewTextBoxColumn";
+            this.labelNick.AutoSize = true;
+            this.labelNick.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNick.Location = new System.Drawing.Point(285, 45);
+            this.labelNick.Name = "labelNick";
+            this.labelNick.Size = new System.Drawing.Size(112, 31);
+            this.labelNick.TabIndex = 6;
+            this.labelNick.Text = "Uživatel";
             // 
-            // datefromDataGridViewTextBoxColumn
+            // bt_RefreshFav
             // 
-            this.datefromDataGridViewTextBoxColumn.DataPropertyName = "Datefrom";
-            this.datefromDataGridViewTextBoxColumn.HeaderText = "Date from";
-            this.datefromDataGridViewTextBoxColumn.Name = "datefromDataGridViewTextBoxColumn";
+            this.bt_RefreshFav.Location = new System.Drawing.Point(1016, 12);
+            this.bt_RefreshFav.Name = "bt_RefreshFav";
+            this.bt_RefreshFav.Size = new System.Drawing.Size(89, 30);
+            this.bt_RefreshFav.TabIndex = 7;
+            this.bt_RefreshFav.Text = "Refresh";
+            this.bt_RefreshFav.UseVisualStyleBackColor = true;
+            this.bt_RefreshFav.Click += new System.EventHandler(this.bt_RefreshFav_Click);
             // 
-            // priceDataGridViewTextBoxColumn
+            // button2
             // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.button2.Location = new System.Drawing.Point(1030, 82);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Ukončit";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // favoriteFligthsBindingSource
+            // button3
             // 
-            this.favoriteFligthsBindingSource.DataSource = typeof(DBHandler.DataMapper.FavoriteFligths);
+            this.button3.Location = new System.Drawing.Point(1030, 53);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Odhlásit se";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1117, 583);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.bt_RefreshFav);
             this.Controls.Add(this.labelNick);
             this.Controls.Add(this.button1);
@@ -258,9 +282,9 @@
             this.Name = "Dashboard";
             this.Text = "Dashboard";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.favoriteFligthsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookedFlightsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.favoriteFligthsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,5 +315,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datefromDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button bt_RefreshFav;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

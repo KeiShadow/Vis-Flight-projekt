@@ -1,5 +1,6 @@
 ﻿using DBHandler.DataMapper;
 using DBHandler.SQLMapper;
+using FlightForms.Forms;
 using FlightFroms.Forms;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,12 @@ namespace FlightForms
                 dash.Show();
                 this.Hide();
             }
+        }
+
+        private void bt_Reg_Click(object sender, EventArgs e)
+        {
+            Register reg = new Register();
+            reg.Show();
         }
     }
 }

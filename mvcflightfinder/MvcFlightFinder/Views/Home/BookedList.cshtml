@@ -73,7 +73,11 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Gender)
                         </td>
+                        <td>
+                            @Html.ActionLink("Delete", "DeleteBooked", new { id = item.Idb })
+                        </td>
                     </tr>
+                  
                 }
 
             </table>

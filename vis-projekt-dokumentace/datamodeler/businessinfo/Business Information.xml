@@ -1,7 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="54833D1F-D281-08EA-D6B6-5B0193C853BB">
-<createdBy>nskyp</createdBy>
-<createdTime>2017-12-18 20:32:02 UTC</createdTime>
-<ownerDesignName>datamodeler</ownerDesignName>
-<shouldBeOpen>false</shouldBeOpen>
-</BusinessInfoDesign>

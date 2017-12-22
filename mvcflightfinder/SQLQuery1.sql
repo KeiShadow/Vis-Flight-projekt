@@ -128,13 +128,14 @@ GO
 
 
 
+select * from BookedFlights
+
+select * from Users
 
 
 
 
-
-
-
+exec sp_helpdb @table= 'Users'
 
 
 
@@ -180,4 +181,5 @@ EXEC sp_RENAME 'BookedFlights.From', 'flyFrom', 'COLUMN'
 EXEC sp_RENAME 'BookedFlights.To', 'flyTo', 'COLUMN'
 
 ALTER TABLE BookedFlights 
-ALTER COLUMN DateOfRes VARCHAR(50) 
+ALTER COLUMN Gender VARCHAR(50) 
+

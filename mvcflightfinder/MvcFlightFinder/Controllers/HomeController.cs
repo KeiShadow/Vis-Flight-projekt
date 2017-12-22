@@ -245,10 +245,18 @@ namespace MvcFlightFinder.Controllers
             return "";
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult DeleteFavorites(int id)
         {
+            FavoriteFligthsSQLMapper.Delete(id);
 
-            return View();
+            return Redirect("/Home/FavoriteFligths");
+        }
+
+        public ActionResult DeleteBooked(int id)
+        {     
+            BookedFlightsSQLMapper.Delete(id);
+
+            return Redirect("/Home/BookedList");
         }
 
         public ActionResult Booking(int id) {
@@ -281,7 +289,7 @@ namespace MvcFlightFinder.Controllers
             booked.Datefrom = letList[id].dateFrom;
             booked.Dateofres = DateTime.Today.ToString();
             booked.Peoples = Peoples;
-            booked.Price = letList[id].Cena;
+            booked.Price = Peoples*letList[id].Cena;
             booked.Gender = Gender;
 
            
@@ -299,6 +307,7 @@ namespace MvcFlightFinder.Controllers
             ViewBag.Warn = "Nemáte žádné zakoupené letenky";
             return View(booked);
         }
+
         public static string UnixTimeStampToDateTime(double unixTimeStamp)
         {
             // Unix timestamp is seconds past epoch
