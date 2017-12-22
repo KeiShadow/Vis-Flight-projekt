@@ -34,7 +34,6 @@ namespace DBHandler.DataMapper
         public string FirstName { get; set; }
         [Required]
         [Display(Name = "Pohlaví?")]
-        [StringLength(int.MaxValue, MinimumLength = 1)]
         public string Gender { get; set; }
     }
 }
