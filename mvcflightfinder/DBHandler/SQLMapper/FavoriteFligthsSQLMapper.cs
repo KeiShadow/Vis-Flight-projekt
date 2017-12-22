@@ -13,6 +13,7 @@ namespace DBHandler.SQLMapper
     {
         public static string SQL_SINGLE_SELECT = "SELECT * FROM FavoriteFligths WHERE IdUser = @IdUser";
         public static string SQL_INSERT = "INSERT INTO FavoriteFligths VALUES (@IdUser,@flyFrom, @flyTo, @DateFrom, @Price)";
+        public static string SQL_DELETE = " DELETE FROM FavoriteFligths WHERE Idf = @IdUser ";
 
         public static List<FavoriteFligths> favFlight { get => favFlight; set => favFlight = value; }
 
@@ -32,7 +33,23 @@ namespace DBHandler.SQLMapper
             return ret;
         }
 
-        public static Collection<FavoriteFligths> getFavFlights(int id)
+        public static int Delete(int id)
+        {
+
+            Database db;
+            db = new Database();
+            db.Connect();
+
+            SqlCommand command = db.CreateCommand(SQL_DELETE);
+            PrepareCommand(command, id);
+            int ret = db.ExecuteNonQuery(command);
+
+            db.Close();
+
+            return ret;
+        }
+
+            public static Collection<FavoriteFligths> getFavFlights(int id)
         {
             Database db;
             db = new Database();

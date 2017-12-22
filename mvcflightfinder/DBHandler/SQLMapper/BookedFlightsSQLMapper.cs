@@ -13,6 +13,7 @@ namespace DBHandler.SQLMapper
     {
         public static string SQL_SINGLE_SELECT = "SELECT * FROM BookedFlights WHERE Users_id = @Users_id";
         public static string SQL_INSERT = "INSERT INTO BookedFlights VALUES (@flyFrom, @flyTo, @DateFrom,@Peoples, @Price,@Users_id,@DateOfRes,@LastName,@FirstName,@Gender)";
+        public static string SQL_DELETE = "DELETE FROM BookedFlights WHERE Idb =@Users_id";
 
         public static List<BookedFlights> favFlight { get => favFlight; set => favFlight = value; }
 
@@ -25,6 +26,22 @@ namespace DBHandler.SQLMapper
 
             SqlCommand command = db.CreateCommand(SQL_INSERT);
             PrepareCommand(command, book);
+            int ret = db.ExecuteNonQuery(command);
+
+            db.Close();
+
+            return ret;
+        }
+
+        public static int Delete(int id)
+        {
+
+            Database db;
+            db = new Database();
+            db.Connect();
+
+            SqlCommand command = db.CreateCommand(SQL_DELETE);
+            PrepareCommand(command, id);
             int ret = db.ExecuteNonQuery(command);
 
             db.Close();
